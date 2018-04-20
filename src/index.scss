@@ -1,7 +1,43 @@
+* {
+  box-sizing: border-box;
+}
 
+html {
+  margin-left: 232px;
+  transition: all .2s ease;
+}
+.ext_html-full {
+  margin-left: 0 !important;
+}
+.ext_sidebar {
+  background-color: pink;
+  position: fixed !important;
+  overflow: visible;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  border-right: 1px solid #ddd;
+  z-index: 1000001;
+  transition: transform .2s ease;
+  transform: translate3d(0, 0, 0);
+  width: 232px;
+}
+.ext_sidebar-hide {
+  transform: translate3d(-100%, 0, 0) !important;
+}
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+.ext_toggle {
+  color: black;
+  background-color: white;
+  width: 30px;
+  height: 30px; 
+  position: absolute; 
+  transition: 0.2s ease-in;
+  right: 12px;
+  top: 12px;
+}
+.ext_toggle-sidebar-hide {
+  right: -35px !important;
+  top: 12px;
 }
