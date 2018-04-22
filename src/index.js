@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import { Native as Store } from './utils/store';
+import { DEFAULTS, STORE } from './constants';
 import './index.css';
 import { exec } from 'child_process';
 
@@ -11,7 +13,7 @@ let $root;
 ready(() => {
   $html = document.documentElement;
   $body = document.body;
-  $html.classList.add('ext-html-margin');
+  $html.classList.add('ext-html-show');
   $root = document.createElement('div');
   $root.setAttribute('id', 'root');
   $root.setAttribute('class', 'ext_sidebar');
@@ -22,6 +24,10 @@ ready(() => {
 class AppContainer extends Component {
   constructor(props) {
     super(props);
+    this.store = new Store();
+    Object.keys(STORE).forEach(key => {
+      this.store.setDefault(STORE[key], DEFAULTS[key]);
+    });
     this.state = {
       open: false,
     };
@@ -31,8 +37,8 @@ class AppContainer extends Component {
     e.preventDefault();
     this.setState(({ open }) => ({ open: !open }));
     $root.classList.toggle('ext_sidebar-hide');
-    $html.classList.toggle('ext-html-margin');
-    $html.classList.toggle('ext_html-full');
+    $html.classList.toggle('ext-html-show');
+    $html.classList.toggle('ext_html-hide');
   };
 
   render() {
@@ -40,11 +46,11 @@ class AppContainer extends Component {
       <React.Fragment>
         <button
           onClick={this.toggleOpen}
-          className={`ext_toggle ext_toggle-sidebar-show ${
-            this.state.open ? 'ext_toggle-sidebar-hide' : ''
+          className={`ext_toggle-btn ${
+            this.state.open ? 'ext_toggle-btn-hide' : ''
           }`}
         >
-          OMG
+          {this.state.open ? '>' : '<'}
         </button>
         <App />
       </React.Fragment>
