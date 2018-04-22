@@ -4,11 +4,14 @@ import App from './App';
 import './index.css';
 import { exec } from 'child_process';
 
+let $html;
 let $body;
 let $root;
 
 ready(() => {
+  $html = document.documentElement;
   $body = document.body;
+  $html.classList.add('ext-html-margin');
   $root = document.createElement('div');
   $root.setAttribute('id', 'root');
   $root.setAttribute('class', 'ext_sidebar');
@@ -24,16 +27,12 @@ class AppContainer extends Component {
     };
   }
 
-  componentDidMount() {
-    this.$html = document.documentElement;
-    this.$self = document.getElementById('root');
-  }
-
   toggleOpen = e => {
     e.preventDefault();
     this.setState(({ open }) => ({ open: !open }));
     $root.classList.toggle('ext_sidebar-hide');
-    this.$html.classList.toggle('ext_html-full');
+    $html.classList.toggle('ext-html-margin');
+    $html.classList.toggle('ext_html-full');
   };
 
   render() {

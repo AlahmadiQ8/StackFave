@@ -15,8 +15,8 @@
     "start": "npm-run-all -p watch-css start-js",
     "build-js": "react-scripts build",
     "build": "npm-run-all build-css build-js && yarn prepare-dist",
-    "clean-dist": "rm -f dist/main*.{js,css}",
-    "copy-build": "cp build/static/**/*.{js,css} dist",
+    "clean-dist": "rm -rf dist/static",
+    "copy-build": "cp -r build/static dist/",
     "prepare-dist": "yarn clean-dist && yarn copy-build && ./replace_bundle.sh",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

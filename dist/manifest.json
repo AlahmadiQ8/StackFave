@@ -5,6 +5,9 @@
   "author": "Mohammad Mohammad",
   "description": "List and Search Stackoverflow Favorites",
   "permissions": ["https://stackoverflow.com/*", "storage"],
+  "web_accessible_resources": [
+    "static/media/*"
+  ],
   "background": {
     "scripts": ["background.js"],
     "persistent": false

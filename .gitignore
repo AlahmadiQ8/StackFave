@@ -1,5 +1,7 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
+dist/**/*.css.map
+dist/**/*.js.map
 src/**/*.css
 
 # dependencies
