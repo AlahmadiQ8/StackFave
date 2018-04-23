@@ -29,16 +29,16 @@ $width: 250px;
 }
 
 .ext_toggle-btn {
-  color: black;
-  background-color: white;
-  width: 30px;
-  height: 30px; 
-  position: absolute; 
-  transition: 0.2s ease-in;
-  right: 12px;
-  top: 12px;
+  color: black !important;
+  background-color: white !important;
+  width: 30px !important;
+  height: 30px !important;
+  position: absolute !important;
+  transition: 0.2s ease-in !important;
+  right: 12px !important;
+  top: 12px !important;
 }
 .ext_toggle-btn-hide {
   right: -35px !important;
-  top: 12px;
+  top: 12px !important;
 }
