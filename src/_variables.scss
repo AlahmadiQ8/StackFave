@@ -1,0 +1,24 @@
+// Colors
+
+$gray-lighter:      #FAFAFA;
+$gray-light:        #E3E3E3;
+$blue-lighter:      #F6FBFF;
+$blue-light:        #A7DAFF;
+$orange-lighter:    #FCE2C6;
+$orange-light:        #FFC07F;
+
+
+// Components
+
+$Header-bg:         $gray-lighter;
+$Header-border:     1px solid $gray-light;
+
+$HeaderButton-bg:         $blue-lighter;
+$HeaderButton-bg-hover:   darken($HeaderButton-bg, 5%);
+$HeaderButton-bg-focus:   $blue-light;
+$HeaderButton-border:     1px solid $blue-light;
+
+$Filter-fill:             $orange-lighter;
+$Filter-stroke:           $orange-light;
+$Filter-fill--hover:    $orange-light;
+$Filter-fill--focus:      $orange-light;

@@ -20,17 +20,20 @@
     "prepare-dist": "yarn clean-dist && yarn copy-build && ./replace_bundle.sh",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9009 -s public",
+    "prettier": "prettier --write \"src/**/*.js\"",
+    "start-storybook": "start-storybook -p 9009 -s public watch-css",
+    "storybook": "npm-run-all -p start-storybook watch-css",
     "build-storybook": "build-storybook -s public"
   },
   "devDependencies": {
-    "node-sass-chokidar": "^1.2.2",
-    "npm-run-all": "^4.1.2",
-    "@storybook/react": "^3.4.2",
     "@storybook/addon-actions": "^3.4.2",
     "@storybook/addon-links": "^3.4.2",
     "@storybook/addons": "^3.4.2",
+    "@storybook/react": "^3.4.2",
     "babel-core": "^6.26.0",
-    "babel-runtime": "^6.26.0"
+    "babel-runtime": "^6.26.0",
+    "node-sass-chokidar": "^1.2.2",
+    "prettier": "^1.12.1",
+    "npm-run-all": "^4.1.2"
   }
 }

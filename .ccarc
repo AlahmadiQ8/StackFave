@@ -1,0 +1,14 @@
+{   
+  "path": "./src/components",
+  "jsExtension": "js",
+  "cssExtension": "scss",
+  "includeTests": false,
+  "includeStories": true,
+  "indexFile": true,
+  "componentMethods": [],
+  "fileNames": {
+    "testFileName": "COMPONENT_NAME.test",
+    "componentFileName": "COMPONENT_NAME",
+    "styleFileName": "COMPONENT_NAME"
+  }
+}

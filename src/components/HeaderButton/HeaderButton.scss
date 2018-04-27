@@ -1,0 +1,29 @@
+@import "../../variables";
+
+
+.HeaderButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 49px;
+  width: 49px;
+  background-color: $HeaderButton-bg;
+  border: $HeaderButton-border; 
+  &:hover {
+    background-color: $HeaderButton-bg-hover;
+    cursor: pointer;
+  }
+  &:focus {
+    outline: none;
+    background-color: $HeaderButton-bg-focus;
+  }
+}
+
+.HeaderButton--selected {
+  background-color: $HeaderButton-bg-focus;
+}
+.HeaderButton--hovered {
+  background-color: $HeaderButton-bg-hover;
+}

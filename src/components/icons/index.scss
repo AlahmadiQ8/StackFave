@@ -1,0 +1,15 @@
+@import '../../variables';
+
+.Filter {
+  width: 100%;
+  path {
+    fill: $Filter-fill;
+    stroke: $Filter-stroke;
+  }
+  &--selected,
+  &--hovered {
+    path {
+      fill: $Filter-fill--hover;
+    }
+  }
+}
