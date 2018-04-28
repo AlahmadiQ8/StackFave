@@ -113,6 +113,25 @@ storiesOf('0_Story', module)
         </HeaderButton>
       </Header>
     );
+  })
+  .add('Star loading', () => {
+    const state = 'loading';
+    return (
+      <Header>
+        <HeaderButton>
+          <Filter />
+        </HeaderButton>
+        <HeaderButton>
+          <Sort />
+        </HeaderButton>
+        <HeaderButton>
+          <Settings />
+        </HeaderButton>
+        <HeaderButton state={'loading'}>
+          <Star />
+        </HeaderButton>
+      </Header>
+    );
   });
 
 // storiesOf('Button', module)

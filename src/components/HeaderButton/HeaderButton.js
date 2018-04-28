@@ -3,9 +3,18 @@ import PropTypes from 'prop-types';
 import styles from './HeaderButton.css';
 
 const HeaderButton = ({ children, state }) => {
-  const classes = `HeaderButton ${
-    state === 'selected' ? 'HeaderButton--selected' : ''
-  } ${state === 'hovered' ? 'HeaderButton--hovered' : ''}`;
+  let classes = 'HeaderButton';
+  switch (state) {
+    case 'selected':
+      classes += ' HeaderButton--selected';
+      break;
+    case 'hovered':
+      classes += ' HeaderButton--hovered';
+      break;
+    case 'loading':
+      classes += ' HeaderButton--loading';
+      break;
+  }
   const childrenWithProps = React.Children.map(children, child =>
     React.cloneElement(child, { state })
   );

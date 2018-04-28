@@ -57,4 +57,5 @@ storiesOf('icons/Star', module)
   ))
   .add('Main', () => <Star />)
   .add('state == hovered', () => <Star state="hovered" />)
-  .add('state == selected', () => <Star state="selected" />);
+  .add('state == selected', () => <Star state="selected" />)
+  .add('state == loading', () => <Star state="loading" />);

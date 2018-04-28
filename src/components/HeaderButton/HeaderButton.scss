@@ -27,3 +27,17 @@
 .HeaderButton--hovered {
   background-color: $HeaderButton-bg-hover;
 }
+
+.HeaderButton--loading {
+  background-color: $HeaderButton-bg-hover;
+  cursor: wait;
+  &:hover {
+    cursor: wait;
+    background-color: $HeaderButton-bg-hover;
+  }
+  &:focus {
+    cursor: wait;
+    outline: none;
+    background-color: $HeaderButton-bg-hover;
+  }
+}

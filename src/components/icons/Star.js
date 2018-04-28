@@ -2,9 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Star = ({ state }) => {
-  const classes = `Star ${state === 'selected' ? 'Star--selected' : ''} ${
-    state === 'hovered' ? 'Star--hovered' : ''
-  }`;
+  let classes = 'Star';
+  switch (state) {
+    case 'selected':
+      classes += ' Star--selected';
+      break;
+    case 'hovered':
+      classes += ' Star--hovered';
+      break;
+    case 'loading':
+      classes += ' Star--loading';
+      break;
+  }
   return (
     <svg className={classes} viewBox="0 0 33 31" version={1}>
       <path
