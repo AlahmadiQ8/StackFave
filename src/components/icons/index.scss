@@ -1,15 +1,27 @@
 @import '../../variables';
 
-.Filter {
+@mixin hover-selected($fill, $stroke, $hover) {
   width: 100%;
   path {
-    fill: $Filter-fill;
-    stroke: $Filter-stroke;
+    fill: $fill;
+    stroke: $stroke;
   }
   &--selected,
   &--hovered {
     path {
-      fill: $Filter-fill--hover;
+      fill: $hover;
     }
   }
 }
+
+.Filter, .Sort {
+  @include hover-selected($Filter-fill, $Filter-stroke, $Filter-fill--hover);
+}
+.Settings {
+  @include hover-selected($Settings-fill, $Settings-stroke, $Settings-fill--hover);
+}
+
+.Star {
+  @include hover-selected($Star-fill, $Star-stroke, $Star-fill--hover);
+}
+

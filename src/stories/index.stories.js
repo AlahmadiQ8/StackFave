@@ -6,7 +6,7 @@ import { linkTo } from '@storybook/addon-links';
 
 import Header from '../components/Header';
 import HeaderButton from '../components/HeaderButton';
-import { Filter } from '../components/icons';
+import { Filter, Sort, Settings, Star } from '../components/icons';
 
 storiesOf('0_Story', module)
   .addDecorator(story => (
@@ -19,16 +19,98 @@ storiesOf('0_Story', module)
       {story()}
     </div>
   ))
-  .add('to Storybook', () => {
+  .add('Main', () => {
+    const state = 'selected';
+    return (
+      <Header>
+        <HeaderButton>
+          <Filter />
+        </HeaderButton>
+        <HeaderButton>
+          <Sort />
+        </HeaderButton>
+        <HeaderButton>
+          <Settings />
+        </HeaderButton>
+        <HeaderButton>
+          <Star />
+        </HeaderButton>
+      </Header>
+    );
+  })
+  .add('Filter Selected', () => {
     const state = 'selected';
     return (
       <Header>
         <HeaderButton state={'selected'}>
           <Filter />
         </HeaderButton>
-        <HeaderButton />
-        <HeaderButton />
-        <HeaderButton />
+        <HeaderButton>
+          <Sort />
+        </HeaderButton>
+        <HeaderButton>
+          <Settings />
+        </HeaderButton>
+        <HeaderButton>
+          <Star />
+        </HeaderButton>
+      </Header>
+    );
+  })
+  .add('Sort Selected', () => {
+    const state = 'selected';
+    return (
+      <Header>
+        <HeaderButton>
+          <Filter />
+        </HeaderButton>
+        <HeaderButton state={'selected'}>
+          <Sort />
+        </HeaderButton>
+        <HeaderButton>
+          <Settings />
+        </HeaderButton>
+        <HeaderButton>
+          <Star />
+        </HeaderButton>
+      </Header>
+    );
+  })
+  .add('Settings Selected', () => {
+    const state = 'selected';
+    return (
+      <Header>
+        <HeaderButton>
+          <Filter />
+        </HeaderButton>
+        <HeaderButton>
+          <Sort />
+        </HeaderButton>
+        <HeaderButton state={'selected'}>
+          <Settings />
+        </HeaderButton>
+        <HeaderButton>
+          <Star />
+        </HeaderButton>
+      </Header>
+    );
+  })
+  .add('Star Selected', () => {
+    const state = 'selected';
+    return (
+      <Header>
+        <HeaderButton>
+          <Filter />
+        </HeaderButton>
+        <HeaderButton>
+          <Sort />
+        </HeaderButton>
+        <HeaderButton>
+          <Settings />
+        </HeaderButton>
+        <HeaderButton state={'selected'}>
+          <Star />
+        </HeaderButton>
       </Header>
     );
   });

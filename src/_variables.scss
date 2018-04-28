@@ -2,10 +2,13 @@
 
 $gray-lighter:      #FAFAFA;
 $gray-light:        #E3E3E3;
+$gray-dark:         #C1C1C1;
 $blue-lighter:      #F6FBFF;
 $blue-light:        #A7DAFF;
 $orange-lighter:    #FCE2C6;
-$orange-light:        #FFC07F;
+$orange-light:      #FFC07F;
+$yellow-lighter:    #FFEC9F;
+$yellow-light:      #FFD42D;
 
 
 // Components
@@ -20,5 +23,20 @@ $HeaderButton-border:     1px solid $blue-light;
 
 $Filter-fill:             $orange-lighter;
 $Filter-stroke:           $orange-light;
-$Filter-fill--hover:    $orange-light;
-$Filter-fill--focus:      $orange-light;
+$Filter-fill--hover:      $orange-lighter;
+$Filter-fill--focus:      $orange-lighter;
+
+$Sort-fill:               $orange-lighter;
+$Sort-stroke:             $orange-light;
+$Sort-fill--hover:        $orange-lighter;
+$Sort-fill--focus:        $orange-lighter;
+
+$Settings-fill:            $gray-light;
+$Settings-stroke:          $gray-dark;
+$Settings-fill--hover:     $gray-light;
+$Settings-fill--focus:     $gray-light;
+
+$Star-fill:                $yellow-lighter;
+$Star-stroke:              $yellow-light;
+$Star-fill--hover:         $yellow-lighter;
+$Star-fill--focus:         $yellow-lighter;
