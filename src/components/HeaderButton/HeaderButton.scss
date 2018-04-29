@@ -17,15 +17,24 @@
   }
   &:focus {
     outline: none;
-    background-color: $HeaderButton-bg-focus;
   }
 }
 
 .HeaderButton--selected {
   background-color: $HeaderButton-bg-focus;
 }
+
 .HeaderButton--hovered {
   background-color: $HeaderButton-bg-hover;
+}
+
+.HeaderButton--none {
+  border: none;
+  cursor: default !important;
+  background-color: transparent;
+  &:hover, &:focus {
+    background-color: transparent;
+  }
 }
 
 .HeaderButton--loading {

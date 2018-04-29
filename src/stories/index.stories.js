@@ -7,8 +7,10 @@ import { linkTo } from '@storybook/addon-links';
 import Header from '../components/Header';
 import HeaderButton from '../components/HeaderButton';
 import { Filter, Sort, Settings, Star } from '../components/icons';
+import App from '../App';
+import '../index.css';
 
-storiesOf('0_Story', module)
+storiesOf('Top Bar', module)
   .addDecorator(story => (
     <div
       style={{
@@ -132,6 +134,26 @@ storiesOf('0_Story', module)
         </HeaderButton>
       </Header>
     );
+  });
+
+storiesOf('App', module)
+  .addDecorator(story => (
+    <div
+      style={{
+        width: '300px',
+        margin: '0 auto',
+      }}
+    >
+      {story()}
+    </div>
+  ))
+  .add('state.open = true', () => {
+    const props = { open: true };
+    return <App {...props} />;
+  })
+  .add('state.open = false', () => {
+    const props = { open: false };
+    return <App {...props} />;
   });
 
 // storiesOf('Button', module)

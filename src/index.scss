@@ -30,17 +30,11 @@ $width: 350px;
   transform: translate3d(-100%, 0, 0) !important;
 }
 
-.ext_toggle-btn {
-  color: black !important;
-  background-color: white !important;
-  width: 30px !important;
-  height: 30px !important;
-  position: absolute !important;
-  transition: 0.2s ease-in !important;
-  right: 12px !important;
-  top: 12px !important;
-}
-.ext_toggle-btn-hide {
-  right: -35px !important;
-  top: 12px !important;
+.toggle-btn {
+  transition: right 0.2s ease-in !important;
+  position: absolute;
+  right: 10px;
+  &--close {
+    right: -75px !important;
+  }
 }

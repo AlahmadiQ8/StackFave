@@ -50,19 +50,7 @@ class AppContainer extends Component {
   }
 
   render() {
-    return (
-      <React.Fragment>
-        <button
-          onClick={this.toggleOpen}
-          className={`ext_toggle-btn ${
-            !this.state.open ? 'ext_toggle-btn-hide' : ''
-          }`}
-        >
-          {this.state.open ? '<' : '>'}
-        </button>
-        <App />
-      </React.Fragment>
-    );
+    return <App open={this.state.open} onToggleBtnClick={this.toggleOpen} />;
   }
 }
 
