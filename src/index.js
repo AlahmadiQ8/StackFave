@@ -19,7 +19,9 @@ ready(() => {
   $body.appendChild($root);
 
   Object.keys(STORE).forEach(key => {
-    store.setDefault(STORE[key], DEFAULTS[key]);
+    if (DEFAULTS[key]) {
+      store.setDefault(STORE[key], DEFAULTS[key]);
+    }
   });
   $html.classList.add('ext-html-show');
   if (store.get(STORE.SHOW_SIDEBAR)) {
@@ -34,9 +36,10 @@ ready(() => {
 class AppContainer extends Component {
   constructor(props) {
     super(props);
+    console.log(store.get(STORE.TOKEN));
     this.state = {
       open: store.get(STORE.SHOW_SIDEBAR),
-      view: VIEWS.SETTINGS,
+      view: store.get(STORE.TOKEN) ? VIEWS.DEFAULT : VIEWS.SETTINGS,
     };
   }
 
