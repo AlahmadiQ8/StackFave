@@ -8,3 +8,8 @@ export const STORE = {
   WIDTH: 'stackfave:width',
   SHOW_SIDEBAR: 'stackfave:showSideBar',
 };
+
+export const VIEWS = {
+  SETTINGS: 'Settings',
+  DEFAULT: 'Default',
+};

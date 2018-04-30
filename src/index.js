@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { Native as Store } from './utils/store';
-import { DEFAULTS, STORE } from './constants';
+import { DEFAULTS, STORE, VIEWS } from './constants';
 import './index.css';
 
 let $html;
@@ -36,6 +36,7 @@ class AppContainer extends Component {
     super(props);
     this.state = {
       open: store.get(STORE.SHOW_SIDEBAR),
+      view: VIEWS.SETTINGS,
     };
   }
 
@@ -45,12 +46,29 @@ class AppContainer extends Component {
     toggleSideBar();
   };
 
+  toggleSettingsView = view => {
+    this.setState((prevState, props) => {
+      if (prevState.view === VIEWS.SETTINGS) {
+        return { view: VIEWS.DEFAULT };
+      } else {
+        return { view: VIEWS.SETTINGS };
+      }
+    });
+  };
+
   componentDidUpdate() {
     store.set(STORE.SHOW_SIDEBAR, this.state.open);
   }
 
   render() {
-    return <App open={this.state.open} onToggleBtnClick={this.toggleOpen} />;
+    return (
+      <App
+        open={this.state.open}
+        view={this.state.view}
+        onToggleBtnClick={this.toggleOpen}
+        toggleSettingsView={this.toggleSettingsView}
+      />
+    );
   }
 }
 

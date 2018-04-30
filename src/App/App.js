@@ -7,8 +7,9 @@ import HeaderButton from '../components/HeaderButton';
 import { Filter, Sort, Settings, Star } from '../components/icons';
 import * as Icon from '../components/icons';
 import * as View from '../components/views';
+import { VIEWS } from '../constants';
 
-const App = ({ open, onToggleBtnClick, view }) => {
+const App = ({ open, onToggleBtnClick, view, toggleSettingsView }) => {
   const toggleBtnClasses = `toggle-btn ${open ? '' : 'toggle-btn--close'}`;
   const CurView = View[view] || React.Fragment;
   return (
@@ -20,7 +21,10 @@ const App = ({ open, onToggleBtnClick, view }) => {
         <HeaderButton>
           <Icon.Sort />
         </HeaderButton>
-        <HeaderButton>
+        <HeaderButton
+          onClick={toggleSettingsView}
+          state={VIEWS.SETTINGS === view ? 'selected' : undefined}
+        >
           <Icon.Settings />
         </HeaderButton>
         <HeaderButton state="none" />

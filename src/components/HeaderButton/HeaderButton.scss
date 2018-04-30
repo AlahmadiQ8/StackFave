@@ -22,6 +22,9 @@
 
 .HeaderButton--selected {
   background-color: $HeaderButton-bg-focus;
+  &:hover {
+    background-color: $HeaderButton-bg-focus;
+  }
 }
 
 .HeaderButton--hovered {
