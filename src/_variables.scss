@@ -3,13 +3,14 @@
 $gray-lighter:      #FAFAFA;
 $gray-light:        #E3E3E3;
 $gray-dark:         #C1C1C1;
+$gray-darker:       #9C9C9C;   
+$gray-darkest:      #6F6F6F;
 $blue-lighter:      #F6FBFF;
 $blue-light:        #A7DAFF;
 $orange-lighter:    #FCE2C6;
 $orange-light:      #FFC07F;
 $yellow-lighter:    #FFEC9F;
 $yellow-light:      #FFD42D;
-
 
 // Components
 
@@ -40,3 +41,6 @@ $Star-fill:                $yellow-lighter;
 $Star-stroke:              $yellow-light;
 $Star-fill--hover:         $yellow-lighter;
 $Star-fill--focus:         $yellow-lighter;
+
+$View__header-font-color:  $gray-darkest;
+$View__input-color:        $gray-darkest;

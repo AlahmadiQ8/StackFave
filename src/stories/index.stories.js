@@ -142,6 +142,8 @@ storiesOf('App', module)
       style={{
         width: '300px',
         margin: '0 auto',
+        height: '550px',
+        border: '1px solid #d3d3d3',
       }}
     >
       {story()}
@@ -153,6 +155,10 @@ storiesOf('App', module)
   })
   .add('state.open = false', () => {
     const props = { open: false };
+    return <App {...props} />;
+  })
+  .add('views/Settings', () => {
+    const props = { open: true, view: 'Settings' };
     return <App {...props} />;
   });
 

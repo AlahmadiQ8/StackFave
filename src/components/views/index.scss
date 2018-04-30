@@ -1,0 +1,37 @@
+@import '../../variables';
+
+.View {
+  padding: 20px 20px;
+}
+
+.View__header {
+  font-size: 1.75rem;
+  color: $View__header-font-color;
+  margin-bottom: 30px;
+}
+
+.View__label {
+  text-transform: uppercase;
+  color: $gray-darker;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.View__input {
+  color: $View__input-color;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 2px solid $orange-light;
+  width: 100%;
+  &::placeholder {
+    color: $gray-dark;
+    font-size: 1rem;
+  }
+}
+
+.View__btn {
+  margin-top: 50px;
+  color: #fff !important;
+  font-weight: bold !important;
+}

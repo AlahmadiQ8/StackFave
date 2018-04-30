@@ -1,3 +1,9 @@
+@import "./variables";
+
+$theme-colors: (
+  "orange": $orange-light
+);
+
 @import "node_modules/bootstrap/scss/bootstrap";
 
 * {
