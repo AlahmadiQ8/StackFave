@@ -2,41 +2,50 @@
 
 
 .HeaderButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 10px;
-  margin-right: 10px;
-  height: 49px;
-  width: 49px;
-  background-color: $HeaderButton-bg;
-  border: $HeaderButton-border; 
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+  height: 49px !important;
+  width: 49px !important;
+  background-color: $HeaderButton-bg !important;
+  border: $HeaderButton-border !important;
+  box-shadow: none !important;
   &:hover {
-    background-color: $HeaderButton-bg-hover;
-    cursor: pointer;
+    background-color: $HeaderButton-bg-hover !important;
+    border: $HeaderButton-border !important;
+    box-shadow: none !important;
+    cursor: pointer !important;
   }
   &:focus {
-    outline: none;
+    background-color: $HeaderButton-bg !important;
+    border: $HeaderButton-border !important;
+    box-shadow: none !important;
+    outline: none !important;
   }
 }
 
 .HeaderButton--selected {
-  background-color: $HeaderButton-bg-focus;
+  background-color: $HeaderButton-bg-focus !important;
   &:hover {
-    background-color: $HeaderButton-bg-focus;
+    background-color: $HeaderButton-bg-focus !important;
+  }
+  &:focus {
+    background-color: $HeaderButton-bg-focus !important;
   }
 }
 
 .HeaderButton--hovered {
-  background-color: $HeaderButton-bg-hover;
+  background-color: $HeaderButton-bg-hover !important;
 }
 
 .HeaderButton--none {
-  border: none;
+  border: none !important;
   cursor: default !important;
-  background-color: transparent;
+  background-color: transparent !important;
   &:hover, &:focus {
-    background-color: transparent;
+    background-color: transparent !important;
   }
 }
 

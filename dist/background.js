@@ -3,8 +3,8 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     return;
   }
 
-  const cssFile = 'static/css/main.ebf9e072.css';
-  const jsFile = 'static/js/main.24582973.js';
+  const cssFile = 'static/css/main.a30baf25.css';
+  const jsFile = 'static/js/main.2548e9b6.js';
 
   const cb = res => {
     if (chrome.runtime.lastError) {

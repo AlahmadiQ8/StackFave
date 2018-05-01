@@ -13,11 +13,7 @@ const Settings = ({}) => (
       id="token"
       placeholder="Paste your access token"
     />
-    <button
-      type="button"
-      className="btn btn-orange btn-sm View__btn"
-      type="submit"
-    >
+    <button type="button" className="View__btn" type="submit">
       Save
     </button>
   </div>
