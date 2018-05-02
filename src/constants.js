@@ -12,4 +12,5 @@ export const STORE = {
 export const VIEWS = {
   SETTINGS: 'Settings',
   DEFAULT: 'Default',
+  LOADING: 'Loading',
 };

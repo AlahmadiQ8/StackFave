@@ -5,6 +5,8 @@ import { Native as Store } from './utils/store';
 import { DEFAULTS, STORE, VIEWS } from './constants';
 import './index.css';
 
+const { Provider, Consumer } = React.createContext();
+
 let $html;
 let $body;
 let $root;
@@ -40,6 +42,7 @@ class AppContainer extends Component {
     this.state = {
       open: store.get(STORE.SHOW_SIDEBAR),
       view: store.get(STORE.TOKEN) ? VIEWS.DEFAULT : VIEWS.SETTINGS,
+      token: store.get(STORE.TOKEN) || '',
     };
   }
 
@@ -59,18 +62,29 @@ class AppContainer extends Component {
     });
   };
 
-  componentDidUpdate() {
-    store.set(STORE.SHOW_SIDEBAR, this.state.open);
+  setToken = token => {
+    this.setState({ token });
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.open !== this.state.open) {
+      store.set(STORE.SHOW_SIDEBAR, this.state.open);
+    }
+    if (prevState.token !== this.state.token) {
+      store.set(STORE.TOKEN, this.state.token);
+    }
   }
 
   render() {
     return (
-      <App
-        open={this.state.open}
-        view={this.state.view}
-        onToggleBtnClick={this.toggleOpen}
-        toggleSettingsView={this.toggleSettingsView}
-      />
+      <Provider value={{ token: this.state.token, setToken: this.setToken }}>
+        <App
+          open={this.state.open}
+          view={this.state.view}
+          onToggleBtnClick={this.toggleOpen}
+          toggleSettingsView={this.toggleSettingsView}
+        />
+      </Provider>
     );
   }
 }
@@ -102,3 +116,5 @@ function toggleSideBar() {
   $html.classList.toggle('ext-html-show');
   $html.classList.toggle('ext_html-hide');
 }
+
+export { Consumer };
