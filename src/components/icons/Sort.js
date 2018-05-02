@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Sort = ({ state }) => {
-  const classes = `Sort ${state === 'selected' ? 'Sort--selected' : ''} ${
-    state === 'hovered' ? 'Sort--hovered' : ''
-  }`;
+  let classes = 'Sort';
+  if (state) {
+    classes += ` Sort--${state}`;
+  }
   return (
     <svg className={classes} viewBox="0 0 20 20" version={1}>
       <path

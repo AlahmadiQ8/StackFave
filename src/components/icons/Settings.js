@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Settings = ({ state }) => {
-  const classes = `Settings ${
-    state === 'selected' ? 'Settings--selected' : ''
-  } ${state === 'hovered' ? 'Settings--hovered' : ''}`;
+  let classes = 'Settings';
+  if (state) {
+    classes += ` Settings--${state}`;
+  }
   return (
     <svg className={classes} viewBox="0 0 36 35" version={1}>
       <path

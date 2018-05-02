@@ -3,16 +3,8 @@ import PropTypes from 'prop-types';
 
 const Star = ({ state }) => {
   let classes = 'Star';
-  switch (state) {
-    case 'selected':
-      classes += ' Star--selected';
-      break;
-    case 'hovered':
-      classes += ' Star--hovered';
-      break;
-    case 'loading':
-      classes += ' Star--loading';
-      break;
+  if (state) {
+    classes += ` Star--${state}`;
   }
   return (
     <svg className={classes} viewBox="0 0 33 31" version={1}>

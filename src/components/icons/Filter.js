@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Filter = ({ state }) => {
-  const classes = `Filter ${state === 'selected' ? 'Filter--selected' : ''} ${
-    state === 'hovered' ? 'Filter--hovered' : ''
-  }`;
+  let classes = 'Filter';
+  if (state) {
+    classes += ` Filter--${state}`;
+  }
   return (
     <svg
       className={classes}
