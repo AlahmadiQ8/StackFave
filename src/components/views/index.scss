@@ -111,6 +111,15 @@
   }
 }
 
+.View__error {
+  margin-top: 2rem;
+  font-size: .75rem;
+  padding: .75rem .5rem;
+  color: $View__error-color;
+  background-color: $View__error-bg;
+  border: $View__error-border;
+}
+
 @keyframes load {
   0% {
     transform: rotate(0deg);
