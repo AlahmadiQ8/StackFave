@@ -136,7 +136,7 @@ storiesOf('Top Bar', module)
     );
   });
 
-storiesOf('App', module)
+storiesOf('AppContainer', module)
   .addDecorator(story => (
     <div
       style={{
@@ -156,8 +156,26 @@ storiesOf('App', module)
   .add('state.open = false', () => {
     const props = { open: false };
     return <App {...props} />;
-  })
-  .add('views/Settings', () => {
+  });
+
+storiesOf('View/Settings', module)
+  .addDecorator(story => (
+    <div
+      style={{
+        width: '300px',
+        margin: '0 auto',
+        height: '550px',
+        border: '1px solid #d3d3d3',
+      }}
+    >
+      {story()}
+    </div>
+  ))
+  .add('Base', () => {
+    const props = { open: true, view: 'Settings' };
+    return <App {...props} />;
+  });
+  .add('loading', () => {
     const props = { open: true, view: 'Settings' };
     return <App {...props} />;
   });
