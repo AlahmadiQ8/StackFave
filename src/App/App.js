@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './App.css';
 import getRelativeURL from '../utils/getRelativeURL';
 import Header from '../components/Header';
 import HeaderButton from '../components/HeaderButton';
-import { Filter, Sort, Settings, Star } from '../components/icons';
 import * as Icon from '../components/icons';
 import * as View from '../components/views';
 import { VIEWS } from '../constants';

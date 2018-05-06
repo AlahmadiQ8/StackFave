@@ -5,7 +5,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   }
 
   const cssFile = 'static/css/main.b3b7d1aa.css';
-  const jsFile = 'static/js/main.73c5a362.js';
+  const jsFile = 'static/js/main.07ce5916.js';
 
   const cb = res => {
     if (chrome.runtime.lastError) {
@@ -51,14 +51,11 @@ function auth(sendResponse) {
   const scope = 'read_inbox,no_expiry,private_info';
   const clientId = '12364';
   const redirectUrl = chrome.identity.getRedirectURL('oauth2');
-  const url = `https://stackoverflow.com/oauth?client_id=${clientId}&scope=${scope}&redirect_uri=${redirectUrl}`;
-
-  console.log(`Processing AUTH action...`);
-
+  const url = `https://stackoverflow.com/oauth/dialog?client_id=${clientId}&scope=${scope}&redirect_uri=${redirectUrl}`;
   chrome.identity.launchWebAuthFlow(
     { url: url, interactive: true },
     redirect_url => {
-      const token = redirect_url.match(/code=(.+)/)[1];
+      const token = redirect_url.match(/access_token=(.+)/)[1];
       sendResponse({ token });
     }
   );

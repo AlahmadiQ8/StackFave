@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { Native as Store } from './utils/store';
 import { DEFAULTS, STORE, VIEWS } from './constants';
+import Api from './utils/api';
 import './index.css';
 
 const { Provider, Consumer } = React.createContext({
@@ -43,13 +44,21 @@ ready(() => {
 class AppContainer extends Component {
   constructor(props) {
     super(props);
+    const token = store.get(STORE.TOKEN);
     this.state = {
       open: store.get(STORE.SHOW_SIDEBAR),
-      view: store.get(STORE.TOKEN) ? VIEWS.DEFAULT : VIEWS.SETTINGS,
-      token: store.get(STORE.TOKEN) || '',
+      view: token ? VIEWS.DEFAULT : VIEWS.SETTINGS,
+      token: token || '',
       error: '',
       loading: false,
     };
+
+    // TODO: remove this before deploying extension
+    if (process.env.NODE_ENV === 'development') {
+      this.api = new Api('egtz3MtlZSZMZ4RKP9FRgg))');
+    } else if (token) {
+      this.api = new Api(token);
+    }
   }
 
   toggleOpen = e => {
@@ -75,6 +84,7 @@ class AppContainer extends Component {
       console.log(`Action 'AUTH' success`);
       if (token) {
         this.setState({ token, view: VIEWS.DEFAULT });
+        this.api = new Api(token);
       } else {
         this.setState({ error });
       }
