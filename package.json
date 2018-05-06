@@ -8,6 +8,9 @@
     "react-dom": "^16.3.2",
     "react-scripts": "1.1.4"
   },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",

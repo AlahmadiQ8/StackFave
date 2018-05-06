@@ -174,7 +174,7 @@ storiesOf('View/Settings', module)
   .add('Base', () => {
     const props = { open: true, view: 'Settings' };
     return <App {...props} />;
-  });
+  })
   .add('loading', () => {
     const props = { open: true, view: 'Settings' };
     return <App {...props} />;

@@ -1,6 +1,6 @@
 export default class Store {
   constructor() {
-    if (!this.get || !this.set) {
+    if (!this.get || !this.set || !this.removeItem) {
       throw new Error('Some methods not implemented');
     }
   }

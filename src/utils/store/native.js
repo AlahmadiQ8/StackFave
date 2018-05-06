@@ -29,4 +29,8 @@ export default class Native extends Store {
     }
     return val;
   }
+
+  removeItem(key) {
+    this.storage.removeItem(key);
+  }
 }

@@ -1,3 +1,5 @@
+/*global chrome*/
+
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
@@ -5,7 +7,10 @@ import { Native as Store } from './utils/store';
 import { DEFAULTS, STORE, VIEWS } from './constants';
 import './index.css';
 
-const { Provider, Consumer } = React.createContext();
+const { Provider, Consumer } = React.createContext({
+  token: '',
+  error: '',
+});
 
 let $html;
 let $body;
@@ -38,11 +43,12 @@ ready(() => {
 class AppContainer extends Component {
   constructor(props) {
     super(props);
-    console.log(store.get(STORE.TOKEN));
     this.state = {
       open: store.get(STORE.SHOW_SIDEBAR),
       view: store.get(STORE.TOKEN) ? VIEWS.DEFAULT : VIEWS.SETTINGS,
       token: store.get(STORE.TOKEN) || '',
+      error: '',
+      loading: false,
     };
   }
 
@@ -53,31 +59,74 @@ class AppContainer extends Component {
   };
 
   toggleSettingsView = view => {
-    this.setState((prevState, props) => {
-      if (prevState.view === VIEWS.SETTINGS) {
-        return { view: VIEWS.DEFAULT };
+    if (this.state.token) {
+      this.setState((prevState, props) => {
+        if (prevState.view === VIEWS.SETTINGS) {
+          return { view: VIEWS.DEFAULT };
+        } else {
+          return { view: VIEWS.SETTINGS };
+        }
+      });
+    }
+  };
+
+  login = () => {
+    chrome.runtime.sendMessage({ type: 'AUTH' }, ({ token, error }) => {
+      console.log(`Action 'AUTH' success`);
+      if (token) {
+        this.setState({ token, view: VIEWS.DEFAULT });
       } else {
-        return { view: VIEWS.SETTINGS };
+        this.setState({ error });
       }
     });
   };
 
-  setToken = token => {
-    this.setState({ token });
+  removeToken = () => {
+    chrome.runtime.sendMessage(
+      {
+        type: 'REMOVE_TOKEN',
+        payload: { token: this.state.token },
+      },
+      ({ error }) => {
+        if (!error) {
+          console.log(`Action 'REMOVE_TOKEN' success`);
+          this.setState({ token: '' });
+        } else {
+          this.setState({ error });
+        }
+      }
+    );
   };
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.open !== this.state.open) {
       store.set(STORE.SHOW_SIDEBAR, this.state.open);
     }
+
     if (prevState.token !== this.state.token) {
-      store.set(STORE.TOKEN, this.state.token);
+      // if new token set
+      if (!prevState.token && this.state.token) {
+        store.set(STORE.TOKEN, this.state.token);
+      }
+
+      // if token removed
+      if (prevState.token && !this.state.token) {
+        store.removeItem(STORE.TOKEN);
+      }
     }
   }
 
   render() {
     return (
-      <Provider value={{ token: this.state.token, setToken: this.setToken }}>
+      <Provider
+        value={{
+          token: this.state.token,
+          setToken: this.setToken,
+          error: this.state.error,
+          login: this.login,
+          removeToken: this.removeToken,
+        }}
+      >
         <App
           open={this.state.open}
           view={this.state.view}
@@ -117,4 +166,4 @@ function toggleSideBar() {
   $html.classList.toggle('ext_html-hide');
 }
 
-export { Consumer };
+export { Consumer, Provider };

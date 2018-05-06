@@ -1,37 +1,37 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Consumer } from '../../index';
 
-const Settings = ({}) => {
-  let inputRef = null;
+const Settings = () => {
   return (
     <Consumer>
-      {({ token, setToken }) => (
+      {({ token, error, login, removeToken }) => (
         <div className="View View__Settings">
           <h1 className="View__header">Settings</h1>
-          <label className="View__label" htmlFor="token">
-            Access Token
-          </label>
-          <input
-            ref={node => {
-              inputRef = node;
-            }}
-            className="View__input"
-            type="text"
-            id="token"
-            placeholder="Paste your access token"
-            defaultValue={token}
-          />
-          <button
-            type="button"
-            className="View__btn"
-            type="submit"
-            onClick={() => {
-              setToken(inputRef.value);
-            }}
-          >
-            Save
-          </button>
+          {!token ? (
+            <React.Fragment>
+              <p className="View_p">
+                You need to login with your stackoverflow account first. Access
+                token will only be stored at local storage.
+              </p>
+              <button
+                type="button"
+                className="View__btn"
+                onClick={() => {
+                  login();
+                }}
+              >
+                Login
+              </button>
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              <p className="View_p">You are already logged in.</p>
+              <button type="button" className="View__btn" onClick={removeToken}>
+                Remove token from storage
+              </button>
+            </React.Fragment>
+          )}
+          {error && <p className="View__error">{error}</p>}
         </div>
       )}
     </Consumer>

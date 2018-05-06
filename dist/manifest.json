@@ -1,15 +1,18 @@
 {
   "name": "StackFavorites",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "manifest_version": 2,
+  "minimum_chrome_version": "29",
   "author": "Mohammad Mohammad",
   "description": "List and Search Stackoverflow Favorites",
-  "permissions": ["https://stackoverflow.com/*", "storage"],
-  "web_accessible_resources": [
-    "static/media/*"
-  ],
+  "permissions": ["https://stackoverflow.com/*", "storage", "identity"],
+  "web_accessible_resources": ["static/media/*"],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
+  },
+  "oauth2": {
+    "client_id": "12364",
+    "scopes": ["read_inbox", "no_expiry", "private_info"]
   }
 }

@@ -11,6 +11,8 @@ $orange-lighter:    #FCE2C6;
 $orange-light:      #FFC07F;
 $yellow-lighter:    #FFEC9F;
 $yellow-light:      #FFD42D;
+$red:               #913f47;
+$red-light:         #fce9eb;
 
 // Components
 
@@ -44,3 +46,6 @@ $Star-fill--focus:         $yellow-lighter;
 
 $View__header-font-color:  $gray-darkest;
 $View__input-color:        $gray-darkest;
+$View__error-color:        $red;
+$View__error-bg:           $red-light;
+$View__error-border:       1px dashed $red;
