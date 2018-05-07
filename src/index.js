@@ -139,7 +139,7 @@ class AppContainer extends Component {
       if (!prevState.token && this.state.token) {
         store.set(STORE.TOKEN, this.state.token);
         const favorites = await this.api.getFavorites();
-        this.api.set(STORE.FAVORITES, favorites);
+        store.set(STORE.FAVORITES, favorites);
         this.setState({ favorites, loading: false });
       }
 
