@@ -16,14 +16,36 @@ export default class Api {
     return url;
   }
 
-  async _fetch(endpoint, queries) {
-    const url = this._buildURL(endpoint, queries);
+  _objToQuery(obj = {}) {
+    const entries = Object.entries(obj);
+    if (entries.length === 0) {
+      return '';
+    }
+    return entries.map(([key, val]) => `${key}=${val}`).join('&');
+  }
+
+  async _fetch(endpoint, queriesObj = {}) {
+    const url = this._buildURL(endpoint, this._objToQuery(queriesObj));
     return fetch(url).then(res => {
       return res.json();
     });
   }
 
-  async getUser() {
-    return this._fetch('/me');
+  async getFavorites(queriesObj = {}) {
+    let favorites = [];
+    let hasMore = false;
+    const mergedQuery = Object.assign({ page: 1 }, queriesObj);
+    do {
+      if (hasMore) {
+        mergedQuery.page += 1;
+      }
+      const { items, has_more } = await this._fetch(
+        '/me/favorites',
+        mergedQuery
+      );
+      favorites = favorites.concat(items);
+      hasMore = has_more;
+    } while (hasMore);
+    return favorites;
   }
 }

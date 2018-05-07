@@ -8,9 +8,9 @@ import * as Icon from '../components/icons';
 import * as View from '../components/views';
 import { VIEWS } from '../constants';
 
-const App = ({ open, onToggleBtnClick, view, toggleSettingsView }) => {
+const App = ({ open, onToggleBtnClick, view, toggleSettingsView, loading }) => {
   const toggleBtnClasses = `toggle-btn ${open ? '' : 'toggle-btn--close'}`;
-  const CurView = View[view] || React.Fragment;
+  const CurView = loading ? View[VIEWS.LOADING] : View[view] || React.Fragment;
   return (
     <React.Fragment>
       <Header>

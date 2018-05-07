@@ -44,21 +44,30 @@ ready(() => {
 class AppContainer extends Component {
   constructor(props) {
     super(props);
-    const token = store.get(STORE.TOKEN);
+    let token;
+
+    // TODO: remove this before deploying extension
+    if (process.env.NODE_ENV === 'production') {
+      token = store.get(STORE.TOKEN);
+    } else {
+      token = 'egtz3MtlZSZMZ4RKP9FRgg))';
+      store.set(STORE.TOKEN, token);
+    }
+
     this.state = {
       open: store.get(STORE.SHOW_SIDEBAR),
       view: token ? VIEWS.DEFAULT : VIEWS.SETTINGS,
-      token: token || '',
+      token: token,
       error: '',
       loading: false,
+      favorites: store.get(STORE.FAVORITES),
     };
 
-    // TODO: remove this before deploying extension
-    if (process.env.NODE_ENV === 'development') {
-      this.api = new Api('egtz3MtlZSZMZ4RKP9FRgg))');
-    } else if (token) {
+    if (token) {
       this.api = new Api(token);
     }
+
+    this.login = this.login.bind(this);
   }
 
   toggleOpen = e => {
@@ -79,17 +88,19 @@ class AppContainer extends Component {
     }
   };
 
-  login = () => {
+  async login() {
+    this.setState({ loading: true });
+
     chrome.runtime.sendMessage({ type: 'AUTH' }, ({ token, error }) => {
       console.log(`Action 'AUTH' success`);
       if (token) {
-        this.setState({ token, view: VIEWS.DEFAULT });
         this.api = new Api(token);
+        this.setState({ token, view: VIEWS.DEFAULT });
       } else {
         this.setState({ error });
       }
     });
-  };
+  }
 
   removeToken = () => {
     chrome.runtime.sendMessage(
@@ -108,7 +119,17 @@ class AppContainer extends Component {
     );
   };
 
-  componentDidUpdate(prevProps, prevState) {
+  async componentDidMount() {
+    const { token, favorites } = this.state;
+    if (token && favorites.length === 0) {
+      this.setState({ loading: true });
+      const items = await this.api.getFavorites();
+      this.setState({ favorites: items, loading: false });
+      store.set(STORE.FAVORITES, items);
+    }
+  }
+
+  async componentDidUpdate(prevProps, prevState) {
     if (prevState.open !== this.state.open) {
       store.set(STORE.SHOW_SIDEBAR, this.state.open);
     }
@@ -117,6 +138,9 @@ class AppContainer extends Component {
       // if new token set
       if (!prevState.token && this.state.token) {
         store.set(STORE.TOKEN, this.state.token);
+        const favorites = await this.api.getFavorites();
+        this.api.set(STORE.FAVORITES, favorites);
+        this.setState({ favorites, loading: false });
       }
 
       // if token removed
@@ -130,9 +154,8 @@ class AppContainer extends Component {
     return (
       <Provider
         value={{
-          token: this.state.token,
+          ...this.state,
           setToken: this.setToken,
-          error: this.state.error,
           login: this.login,
           removeToken: this.removeToken,
         }}
@@ -142,6 +165,7 @@ class AppContainer extends Component {
           view={this.state.view}
           onToggleBtnClick={this.toggleOpen}
           toggleSettingsView={this.toggleSettingsView}
+          loading={this.state.loading}
         />
       </Provider>
     );
