@@ -132,3 +132,26 @@
     transform: rotate(360deg);
   }
 }
+
+.View__default {
+  overflow-y: auto;
+  height: calc(100vh - (80px + 50px));
+}
+
+.ListItem {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 85%;
+}
+.ListItem__meta {
+  flex: 0 0 20%;
+  max-width: 20%;
+  svg {
+    max-width: 20px;;
+  }
+}
+.ListItem__content {
+  flex: 0 0 80%;
+  max-width: 80%;
+}
+

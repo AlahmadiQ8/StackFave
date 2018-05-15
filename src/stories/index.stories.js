@@ -8,6 +8,8 @@ import Header from '../components/Header';
 import HeaderButton from '../components/HeaderButton';
 import { Filter, Sort, Settings, Star } from '../components/icons';
 import App from '../App';
+import { Provider } from '../index';
+import favorites from './favorites';
 import '../index.css';
 
 storiesOf('Top Bar', module)
@@ -175,9 +177,53 @@ storiesOf('View/Settings', module)
     const props = { open: true, view: 'Settings' };
     return <App {...props} />;
   })
-  .add('loading', () => {
-    const props = { open: true, view: 'Settings' };
+  .add('logged in', () => {
+    const props = { open: true, view: 'Settings', token: 'sdfsdd' };
+    return (
+      <Provider value={props}>
+        <App {...props} />
+      </Provider>
+    );
+  });
+
+storiesOf('View/Loading', module)
+  .addDecorator(story => (
+    <div
+      style={{
+        width: '300px',
+        margin: '0 auto',
+        height: '550px',
+        border: '1px solid #d3d3d3',
+      }}
+    >
+      {story()}
+    </div>
+  ))
+  .add('Base', () => {
+    const props = { open: true, view: 'Loading' };
     return <App {...props} />;
+  });
+
+storiesOf('View/Default', module)
+  .addDecorator(story => (
+    <div
+      style={{
+        width: '300px',
+        margin: '0 auto',
+        height: '550px',
+        border: '1px solid #d3d3d3',
+      }}
+    >
+      {story()}
+    </div>
+  ))
+  .add('Base', () => {
+    const props = { open: true, view: 'Default', favorites };
+    return (
+      <Provider value={props}>
+        <App {...props} />
+      </Provider>
+    );
   });
 
 // storiesOf('Button', module)

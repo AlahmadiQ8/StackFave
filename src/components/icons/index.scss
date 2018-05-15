@@ -28,6 +28,22 @@
   }
 }
 
+.Thumbsup {
+  width: 100%;
+  path {
+    fill: none;
+    stroke: $Thumbsup-stroke;
+  }
+}
+
+.Eye {
+  width: 100%;
+  path {
+    fill: none;
+    stroke: $Eye-stroke;
+  }
+}
+
 @keyframes spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
