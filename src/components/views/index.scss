@@ -144,14 +144,26 @@
   font-size: 85%;
 }
 .ListItem__meta {
-  flex: 0 0 20%;
-  max-width: 20%;
-  svg {
-    max-width: 20px;;
+  flex: 0 0 30%;
+  max-width: 30%;
+}
+.ListItem__attr {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  height: 30px;
+  > div, > svg {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+  }
+  > div:first-of-type {
+    text-align: right;
+    margin-right: 10px;
   }
 }
 .ListItem__content {
-  flex: 0 0 80%;
-  max-width: 80%;
+  flex: 0 0 70%;
+  max-width: 70%;
 }
 

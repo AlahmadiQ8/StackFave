@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Star = ({ state }) => {
+const Star = ({ state, style }) => {
   let classes = 'Star';
   if (state) {
     classes += ` Star--${state}`;
   }
   return (
-    <svg className={classes} viewBox="0 0 33 31" version={1}>
+    <svg className={classes} viewBox="0 0 33 31" version={1} style={style}>
       <path
         transform="translate(-8 -8)"
         fillRule="evenodd"
