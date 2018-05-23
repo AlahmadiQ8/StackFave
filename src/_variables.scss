@@ -7,6 +7,7 @@ $gray-darker:       #9C9C9C;
 $gray-darkest:      #6F6F6F;
 $blue-lighter:      #F6FBFF;
 $blue-light:        #A7DAFF;
+$blue-dark:         #0D5B8F;
 $orange-lighter:    #FCE2C6;
 $orange-light:      #FFC07F;
 $yellow-lighter:    #FFEC9F;
@@ -55,3 +56,6 @@ $View__input-color:        $gray-darkest;
 $View__error-color:        $red;
 $View__error-bg:           $red-light;
 $View__error-border:       1px dashed $red;
+
+$ListItem__meta-color:     $gray-darker;
+$ListItem__title-color:    $blue-dark;

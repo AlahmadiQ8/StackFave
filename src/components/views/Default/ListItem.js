@@ -37,7 +37,7 @@ const ListItem = ({
       </div>
       <div className="ListItem__content">
         <p>{title}</p>
-        <div>{tags}</div>
+        <div>{tags.join(' ')}</div>
       </div>
     </div>
   );

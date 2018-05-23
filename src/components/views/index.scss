@@ -141,11 +141,13 @@
 .ListItem {
   display: flex;
   flex-wrap: wrap;
-  font-size: 85%;
+  font-size: 1rem;
 }
 .ListItem__meta {
   flex: 0 0 30%;
   max-width: 30%;
+  font-size: 85%;
+  color: $ListItem__meta-color;
 }
 .ListItem__attr {
   display: flex;
@@ -165,5 +167,6 @@
 .ListItem__content {
   flex: 0 0 70%;
   max-width: 70%;
+  color: $ListItem__title-color;
 }
 
