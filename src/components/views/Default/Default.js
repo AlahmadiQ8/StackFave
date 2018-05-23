@@ -1,6 +1,7 @@
 import React from 'react';
 import { Consumer } from '../../../index';
 import ListItem from './ListItem';
+import './index.css';
 
 const Default = () => {
   return (

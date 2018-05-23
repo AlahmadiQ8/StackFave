@@ -37,7 +37,9 @@ const ListItem = ({
       </div>
       <div className="ListItem__content">
         <p>{title}</p>
-        <div>{tags.join(' ')}</div>
+        <div className="ListItem__tags">
+          {tags.map(tag => <div key={tag}>{tag}</div>)}
+        </div>
       </div>
     </div>
   );
