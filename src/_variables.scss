@@ -57,8 +57,9 @@ $View__error-color:        $red;
 $View__error-bg:           $red-light;
 $View__error-border:       1px dashed $red;
 
-$ListItem__meta-color:     $gray-darker;
-$ListItem__title-color:    $blue-dark;
-$ListItem__tag-color:      $blue-dark;
-$ListItem__tag-bg:         $blue-light;
+$ListItem__meta-color:           $gray-darker;
+$ListItem__title-color:          $blue-dark;
+$ListItem__title-hover-color:    lighten($blue-dark, 20%);
+$ListItem__tag-color:            $blue-dark;
+$ListItem__tag-bg:               $blue-light;
  

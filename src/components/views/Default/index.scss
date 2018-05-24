@@ -40,6 +40,14 @@
   color: $ListItem__title-color;
 }
 
+.ListItem__title {
+  color: $ListItem__title-color;
+  &:hover {
+    text-decoration: none;
+    color: $ListItem__title-hover-color;
+  }
+}
+
 .ListItem__tags {
   display: flex;
   flex-wrap: wrap;
