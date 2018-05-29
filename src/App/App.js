@@ -4,6 +4,7 @@ import './App.css';
 import getRelativeURL from '../utils/getRelativeURL';
 import Header from '../components/Header';
 import HeaderButton from '../components/HeaderButton';
+import Popup from '../components/Popup';
 import * as Icon from '../components/icons';
 import * as View from '../components/views';
 import { VIEWS } from '../constants';
@@ -14,9 +15,16 @@ const App = ({ open, onToggleBtnClick, view, toggleSettingsView, loading }) => {
   return (
     <React.Fragment>
       <Header>
-        <HeaderButton>
-          <Icon.Filter />
-        </HeaderButton>
+        <Popup>
+          <Popup.Button>
+            {({ toggle, open }) => (
+              <HeaderButton onClick={toggle} state={open ? 'selected' : ''}>
+                <Icon.Filter />
+              </HeaderButton>
+            )}
+          </Popup.Button>
+          <Popup.Content>OMG OMG OMGG OMG</Popup.Content>
+        </Popup>
         <HeaderButton>
           <Icon.Sort />
         </HeaderButton>

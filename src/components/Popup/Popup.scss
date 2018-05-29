@@ -1,0 +1,17 @@
+@import "../../variables";
+
+.Popup {
+  position: relative;
+}
+
+.Popup__Content {
+  position: absolute;
+  padding: 20px;
+  top: 55px;
+  left: 10px;
+  background-color: white;
+  z-index: 1;
+  width: 225px;
+  max-height: 400px;
+  border: $Popup__Content-border;
+}

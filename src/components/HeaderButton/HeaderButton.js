@@ -18,7 +18,7 @@ const HeaderButton = ({ children, state, className, onClick }) => {
 };
 
 HeaderButton.propTypes = {
-  state: PropTypes.oneOf(['selected', 'hovered', 'none', 'loading']),
+  state: PropTypes.oneOf(['selected', 'hovered', 'none', 'loading', '']),
   onClick: PropTypes.func,
 };
 
