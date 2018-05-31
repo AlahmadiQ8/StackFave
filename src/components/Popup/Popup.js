@@ -32,7 +32,7 @@ class Popup extends Component {
   render() {
     return (
       <ToggleContext.Provider value={this.state}>
-        <div class="Popup">{this.props.children}</div>
+        <div className="Popup">{this.props.children}</div>
       </ToggleContext.Provider>
     );
   }
