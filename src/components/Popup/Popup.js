@@ -1,44 +1,64 @@
 import React, { Component } from 'react';
 import './Popup.css';
 
-const ToggleContext = React.createContext({
+export const ToggleContext = React.createContext({
   open: false,
   toggle: () => {},
 });
 
 class Popup extends Component {
+  constructor(props) {
+    super(props);
+    this.node = React.createRef();
+  }
+
+  onMouseOver = () => {
+    this.setState({ mouseOver: true });
+  };
+  onMouseLeave = () => {
+    this.setState({ mouseOver: false });
+  };
+
+  componentDidMount() {
+    this.node.current.addEventListener('mouseenter', this.onMouseOver);
+    this.node.current.addEventListener('mouseleave', this.onMouseLeave);
+  }
+
+  componentWillUnmount() {
+    this.node.current.removeEventListener('mouseenter', this.onMouseOver);
+    this.node.current.removeEventListener('mouseleave', this.onMouseLeave);
+  }
+
   static Button = ({ children }) => (
     <ToggleContext.Consumer>{children}</ToggleContext.Consumer>
-  );
-
-  static Content = ({ children }) => (
-    <ToggleContext.Consumer>
-      {({ open }) => {
-        const wrapper = <div className="Popup__Content">{children}</div>;
-        return open ? wrapper : null;
-      }}
-    </ToggleContext.Consumer>
   );
 
   toggle = () => {
     this.setState(({ open }) => ({ open: !open }));
   };
 
+  close = () => {
+    this.setState({ open: false });
+  };
+
   state = {
     open: false,
     toggle: this.toggle,
+    close: this.close,
+    mouseOver: false,
   };
 
   render() {
     return (
       <ToggleContext.Provider value={this.state}>
-        <div className="Popup">{this.props.children}</div>
+        <div className="Popup" tabIndex="0" ref={this.node}>
+          {this.props.children}
+        </div>
       </ToggleContext.Provider>
     );
   }
 }
 
-// function Usage({ onToggle = (...args) => console.log('onToggle', ...args) }) {
 //   return (
 //     <Popup>
 //       <Popup.Button>

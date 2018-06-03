@@ -2,6 +2,9 @@
 
 .Popup {
   position: relative;
+  &:focus {
+    outline: none;
+  }
 }
 
 .Popup__Content {
@@ -14,4 +17,7 @@
   width: 225px;
   max-height: 400px;
   border: $Popup__Content-border;
+  &:focus {
+    outline: none;
+  }
 }
