@@ -4,7 +4,7 @@ import './App.css';
 import getRelativeURL from '../utils/getRelativeURL';
 import Header from '../components/Header';
 import HeaderButton from '../components/HeaderButton';
-import Popup from '../components/Popup';
+import Popup, { Filters } from '../components/Popup';
 import * as Icon from '../components/icons';
 import * as View from '../components/views';
 import { VIEWS } from '../constants';
@@ -23,7 +23,9 @@ const App = ({ open, onToggleBtnClick, view, toggleSettingsView, loading }) => {
               </HeaderButton>
             )}
           </Popup.Button>
-          <Popup.Content>OMG OMG OMGG OMG</Popup.Content>
+          <Popup.Content>
+            <Filters />
+          </Popup.Content>
         </Popup>
         <HeaderButton>
           <Icon.Sort />

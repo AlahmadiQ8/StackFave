@@ -12,6 +12,27 @@ $theme-colors: (
 
 $width: 350px;
 
+.h1, .h2 {
+  color: $h1-color !important;
+  font-weight: bold !important;
+}
+.h1 {
+  font-size: 1.75rem !important;
+  margin-bottom: 30px !important;
+}
+
+.h2 {
+  font-size: 1.5rem !important;
+  margin-bottom: 1.25rem !important;
+}
+.label {
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: $gray-darker;
+  font-weight: bold; 
+
+}
+
 .ext-html-show {
   margin-left: $width !important;
   transition: all .2s ease;

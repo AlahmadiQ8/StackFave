@@ -37,7 +37,6 @@ class Content extends Component {
         'mouseleave',
         this.onMouseLeave
       );
-      this.shouldClose = false;
     }
   }
   render() {
@@ -48,9 +47,10 @@ class Content extends Component {
         tabIndex="0"
         ref={this.contentNode}
         onBlur={() => {
-          if (mouseOver && !this.state.mouseOverContent) {
-            // close();
-          } else {
+          if (
+            !(mouseOver && !this.state.mouseOverContent) &&
+            !this.state.mouseOverContent
+          ) {
             close();
           }
         }}
