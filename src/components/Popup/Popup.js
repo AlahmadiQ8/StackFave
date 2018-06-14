@@ -47,6 +47,14 @@ class Popup extends Component {
     close: this.close,
     mouseOver: false,
   };
+  // TODO: remove this at some point
+  // for debugging
+  // state = {
+  //   open: true,
+  //   toggle: () => {},
+  //   close: () => {},
+  //   mouseOver: false,
+  // };
 
   render() {
     return (
