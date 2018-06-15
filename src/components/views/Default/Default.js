@@ -1,5 +1,5 @@
 import React from 'react';
-import { Consumer } from '../../../index';
+import { Consumer } from '../../../context';
 import ListItem from './ListItem';
 import './index.css';
 

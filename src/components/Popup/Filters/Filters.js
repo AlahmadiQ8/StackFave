@@ -1,25 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
+import getTags from '../../../utils/getTags';
+import { Consumer } from '../../../context';
 import './Filters.css';
 
-export const colourOptions = [
-  { value: 'ocean', label: 'Ocean', color: '#00B8D9' },
-  { value: 'blue', label: 'Blue', color: '#0052CC', disabled: true },
-  { value: 'purple', label: 'Purple', color: '#5243AA' },
-  { value: 'red', label: 'Red', color: '#FF5630' },
-  { value: 'orange', label: 'Orange', color: '#FF8B00' },
-  { value: 'yellow', label: 'Yellow', color: '#FFC400' },
-  { value: 'green', label: 'Green', color: '#36B37E' },
-  { value: 'forest', label: 'Forest', color: '#00875A' },
-  { value: 'slate', label: 'Slate', color: '#253858' },
-  { value: 'silver', label: 'Silver', color: '#666666' },
-];
-
 const styles = {
-  control: (base, state) => {
-    console.log(state);
-    const { isFocused } = state;
+  control: (base, { isFocused }) => {
     return {
       ...base,
       border: 'none',
@@ -51,24 +38,44 @@ const styles = {
       backgroundColor: '#F0A14F',
     },
   }),
+  option: (base, { isFocused, isSelected }) => ({
+    ...base,
+    backgroundColor: isSelected
+      ? '#FCE2C6'
+      : isFocused
+        ? '#FCE2C6'
+        : 'transparent',
+    '&:hover': {
+      backgroundColor: '#FCE2C6',
+    },
+  }),
 };
 
 const Filters = () => (
-  <React.Fragment>
-    <h2 className="h2">Filters</h2>
-    <h4 className="label">By tags</h4>
-    <Select
-      defaultValue={[colourOptions[2], colourOptions[3]]}
-      isMulti
-      name="colors"
-      options={colourOptions}
-      classNamePrefix="select"
-      styles={styles}
-      components={{ DropdownIndicator: null }}
-      isClearable={false}
-      className="Filters__Select"
-    />
-  </React.Fragment>
+  <Consumer>
+    {({ favorites }) => {
+      const options = getTags(favorites).map(tag => ({
+        value: tag,
+        label: tag,
+      }));
+      return (
+        <React.Fragment>
+          <h2 className="h2">Filters</h2>
+          <h4 className="label">By tags</h4>
+          <Select
+            isMulti
+            name="colors"
+            options={options}
+            classNamePrefix="select"
+            styles={styles}
+            components={{ DropdownIndicator: null }}
+            isClearable={false}
+            className="Filters__Select"
+          />
+        </React.Fragment>
+      );
+    }}
+  </Consumer>
 );
 
 Filters.propTypes = {};

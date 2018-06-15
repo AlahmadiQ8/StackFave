@@ -8,10 +8,7 @@ import { DEFAULTS, STORE, VIEWS } from './constants';
 import Api from './utils/api';
 import './index.css';
 
-const { Provider, Consumer } = React.createContext({
-  token: '',
-  error: '',
-});
+import { Provider } from './context';
 
 let $html;
 let $body;
@@ -121,7 +118,7 @@ class AppContainer extends Component {
 
   async componentDidMount() {
     const { token, favorites } = this.state;
-    if (token && favorites.length === 0) {
+    if (token) {
       this.setState({ loading: true });
       const items = await this.api.getFavorites();
       this.setState({ favorites: items, loading: false });
@@ -199,5 +196,3 @@ function toggleSideBar() {
   $html.classList.toggle('ext-html-show');
   $html.classList.toggle('ext_html-hide');
 }
-
-export { Consumer, Provider };
