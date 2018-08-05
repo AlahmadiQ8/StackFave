@@ -25,15 +25,13 @@ I started this project since I was stuggling to easily navigate through my starr
 
 ![](https://cl.ly/3r2Q3k0F1v1q/Screen%2520Recording%25202018-05-30%2520at%252009.59%2520PM.gif)
 
-## Road Map 
+## [Road Map](https://github.com/AlahmadiQ8/StackFave/projects/1)
 
-### Filters 
+<!-- ### Filters 
 
-* [ ] by tags
-
-![](https://i.imgur.com/lucmz9P.png)
+* [x] by tags
 
 ### Re-fetch data 
 
 * [ ] on each page load
-* [ ] then the user stars a new question 
+* [ ] then the user stars a new question  -->
