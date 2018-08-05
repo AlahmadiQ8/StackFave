@@ -198,6 +198,7 @@ class AppContainer extends Component {
           onToggleBtnClick={this.toggleOpen}
           toggleSettingsView={this.toggleSettingsView}
           loading={this.state.loading}
+          hasFilters={this.state.filters.length > 0}
         />
       </Provider>
     );

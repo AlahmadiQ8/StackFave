@@ -9,7 +9,14 @@ import * as Icon from '../components/icons';
 import * as View from '../components/views';
 import { VIEWS } from '../constants';
 
-const App = ({ open, onToggleBtnClick, view, toggleSettingsView, loading }) => {
+const App = ({
+  open,
+  onToggleBtnClick,
+  view,
+  toggleSettingsView,
+  loading,
+  hasFilters,
+}) => {
   const toggleBtnClasses = `toggle-btn ${open ? '' : 'toggle-btn--close'}`;
   const CurView = loading ? View[VIEWS.LOADING] : View[view] || React.Fragment;
   return (
@@ -18,7 +25,10 @@ const App = ({ open, onToggleBtnClick, view, toggleSettingsView, loading }) => {
         <Popup>
           <Popup.Button>
             {({ toggle, open }) => (
-              <HeaderButton onClick={toggle} state={open ? 'selected' : ''}>
+              <HeaderButton
+                onClick={toggle}
+                state={open || hasFilters ? 'selected' : ''}
+              >
                 <Icon.Filter />
               </HeaderButton>
             )}
