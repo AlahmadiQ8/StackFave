@@ -53,8 +53,8 @@ const styles = {
 
 const Filters = () => (
   <Consumer>
-    {({ favorites }) => {
-      const options = getTags(favorites).map(tag => ({
+    {({ favorites, setFilters, filters, tags }) => {
+      const options = tags.map(tag => ({
         value: tag,
         label: tag,
       }));
@@ -64,6 +64,7 @@ const Filters = () => (
           <h4 className="label">By tags</h4>
           <Select
             isMulti
+            value={filters.map(str => ({ label: str, value: str }))}
             name="colors"
             options={options}
             classNamePrefix="select"
@@ -71,6 +72,9 @@ const Filters = () => (
             components={{ DropdownIndicator: null }}
             isClearable={false}
             className="Filters__Select"
+            onChange={(selected, action) => {
+              setFilters(selected.map(({ value }) => value));
+            }}
           />
         </React.Fragment>
       );

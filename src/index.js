@@ -6,6 +6,7 @@ import App from './App';
 import { Native as Store } from './utils/store';
 import { DEFAULTS, STORE, VIEWS } from './constants';
 import Api from './utils/api';
+import getTags from './utils/getTags';
 import './index.css';
 
 import { Provider } from './context';
@@ -58,6 +59,8 @@ class AppContainer extends Component {
       error: '',
       loading: false,
       favorites: store.get(STORE.FAVORITES),
+      filters: store.get(STORE.FILTERS),
+      tags: store.get(STORE.FILTERS_OPTIONS),
     };
 
     if (token) {
@@ -116,13 +119,45 @@ class AppContainer extends Component {
     );
   };
 
+  setFilters = filters => {
+    this.setState(
+      prevState => {
+        const items = store.get(STORE.FAVORITES);
+        return {
+          filters,
+          favorites: filters.length
+            ? this.filterFavorites(items, filters)
+            : items,
+        };
+      },
+      () => {
+        store.set(STORE.FILTERS, filters);
+      }
+    );
+  };
+
+  filterFavorites = (items, filters) => {
+    return items.filter(({ tags = [] }) =>
+      tags.some(tag => filters.includes(tag))
+    );
+  };
+
   async componentDidMount() {
-    const { token, favorites } = this.state;
+    const { token } = this.state;
     if (token) {
       this.setState({ loading: true });
       const items = await this.api.getFavorites();
-      this.setState({ favorites: items, loading: false });
+      const filters = this.state.filters;
+      const tags = getTags(items);
+      this.setState({
+        favorites: filters.length
+          ? this.filterFavorites(items, filters)
+          : items,
+        loading: false,
+        tags,
+      });
       store.set(STORE.FAVORITES, items);
+      store.set(STORE.FILTERS_OPTIONS, tags);
     }
   }
 
@@ -152,9 +187,9 @@ class AppContainer extends Component {
       <Provider
         value={{
           ...this.state,
-          setToken: this.setToken,
           login: this.login,
           removeToken: this.removeToken,
+          setFilters: this.setFilters,
         }}
       >
         <App
