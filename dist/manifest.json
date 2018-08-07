@@ -1,10 +1,10 @@
 {
-  "name": "StackFavorites",
-  "version": "0.1.0",
+  "name": "Stackoverflow Starred Viewer",
+  "version": "0.0.1",
   "manifest_version": 2,
   "minimum_chrome_version": "29",
   "author": "Mohammad Mohammad",
-  "description": "List and Search Stackoverflow Favorites",
+  "description": "Display all starred Stackoverflow questions on a sidebar",
   "permissions": ["https://stackoverflow.com/*", "storage", "identity"],
   "web_accessible_resources": ["static/media/*"],
   "background": {

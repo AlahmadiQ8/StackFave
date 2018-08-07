@@ -1,6 +1,6 @@
 {
-  "name": "app",
-  "version": "0.1.0",
+  "name": "so-starred-viewer",
+  "version": "0.0.1",
   "private": true,
   "dependencies": {
     "bootstrap": "^4.1.0",

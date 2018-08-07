@@ -37,9 +37,6 @@ const App = ({
             <Filters />
           </Popup.Content>
         </Popup>
-        <HeaderButton>
-          <Icon.Sort />
-        </HeaderButton>
         <HeaderButton
           onClick={toggleSettingsView}
           state={VIEWS.SETTINGS === view ? 'selected' : undefined}
