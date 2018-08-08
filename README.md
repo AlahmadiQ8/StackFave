@@ -1,7 +1,5 @@
 # Stackoverflow Chrome Extension
 
-# STILL IN PROGRESS
-
 A chrome extension to easily braws through your starred stack-overflow questions. This project is hugely inspired by [octotree](https://github.com/buunguyen/octotree).
 
 ![](https://dzwonsemrish7.cloudfront.net/items/0S42303U0y1H362i2u3R/Screen%20Recording%202018-05-30%20at%2009.49%20PM.gif)
